@@ -48,8 +48,16 @@ function draw() {
     if (!collided) {
         handleMovement();  
     } else {
+        
+        fill("gray");
         text('You collided!', width / 2, height / 2);
+        fill("white");
+        textSize(18);
+        
+        
     }
+   
+
 }
 
 function detectCollision() {
