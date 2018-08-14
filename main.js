@@ -1,93 +1,107 @@
 const ness = {
-    width : 50,
-    height : 50,
-    x : 0,
-    y : 0,
-    speed: 3
-}
+    sprite: undefined,
+    name: 'Ness',
+    inventory: [],
+    quests: {
+        basket: false
+    }
+};
 
 const paula = {
-    width : 50,
-    height : 50,
-    x : 200,
-    y : 300,
-    speed: 3
-}
+    sprite: undefined,
+    name: 'Paula',
+    dialogue: 'baskets are the latest fad. I sure wish I had one. I know! If you get me a basket you can be my boyfriend!'
+};
 
 const jeff = {
-    width : 50,
-    height : 50,
-    x : 40,
-    y : 60,
-    speed: 3
-}
+    sprite: undefined,
+    name: 'Jeff'
+};
 
 const poo = {
-    width : 50,
-    height : 50,
-    x : 550,
-    y : 120,
-    speed: 3
+    sprite: undefined,
+    name: 'Poo'
+};
+
+const basket = {
+    sprite: undefined,
+    name: 'basket'
 }
 
 const npcs = [paula, jeff, poo];
+let objects = [];
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(650, 650);
     rectMode(CENTER);
-    ness.x = width / 2;
-    ness.y = height / 2;
+    initializeSprites();
 }
 
 function draw() {
     background("yellow");
     fill("grey");
     drawSprites();
-    const collided = detectCollision();
+    detectCollisionWithNPCs();
+    detectCollisionWithObjects();
+    handleMovement();
+}
 
-    if (!collided) {
-        handleMovement();  
-    } else {
-        text('You collided!', width / 2, height / 2);
+function didCollideWithNPC() {
+    console.log('collided');
+    textAlign(CENTER);
+    text(`Hi, I'm ${this.name}`, width / 2, height / 2);
+    text(this.dialogue, (width / 2) + 10, (height / 2) + 15);
+    
+}
+
+function detectCollisionWithNPCs() {
+    for (const npc of npcs) {
+        ness.sprite.collide(npc.sprite, didCollideWithNPC.bind(npc));
     }
 }
 
-function detectCollision() {
-    for (const npc of npcs) {
-        const distance = dist(ness.x, ness.y, npc.x, npc.y);
+function didCollideWithObject() {
+    console.log('collided');
+    textAlign(CENTER);
+    text(`You found ${this.name}`, width / 2, height / 2);
 
-        if (distance <= (ness.width / 2) + npc.width / 2) {
-            return true;
-        }
+    if (this.name === 'basket') {
+        ness.quests.basket = true;
+        paula.dialogue = 'Thank you for finding my basket!';
     }
 
-    return false;
+    objects = objects.filter(object => object.name !== this.name);
+    this.sprite.remove();
+}
+
+function detectCollisionWithObjects() {
+    for (const object of objects) {
+        ness.sprite.collide(object.sprite, didCollideWithObject.bind(object));
+    }
 }
 
 function handleMovement() {
     if(keyIsDown(LEFT_ARROW)) {
-        ness.x -= ness.speed;
-    } 
-
-    if(keyIsDown(RIGHT_ARROW)) {
-        ness.x += ness.speed;
-    }
-
-    if(keyIsDown(UP_ARROW)) {
-        ness.y -= ness.speed;
-    }
-
-    if(keyIsDown(DOWN_ARROW)) {
-        ness.y += ness.speed;
+        ness.sprite.setSpeed(3, 180);
+    } else if(keyIsDown(RIGHT_ARROW)) {
+        ness.sprite.setSpeed(3, 0);
+    } else if(keyIsDown(UP_ARROW)) {
+        ness.sprite.setSpeed(3, 270);
+    } else if(keyIsDown(DOWN_ARROW)) {
+        ness.sprite.setSpeed(3,90);
+    } else {
+        ness.sprite.setSpeed(0);
     }
 }
 
-function drawSprites() {
-    //draw ness
-   rect(ness.x, ness.y, ness.width, ness.height);
+function initializeSprites() {
+    ness.sprite = createSprite(width / 2, height / 2, width / 20, height / 20);
 
-   for (const npc of npcs) {
-       rect(npc.x, npc.y, npc.width, npc.height);
-   }
+    for (let i = 0; i < npcs.length; i++) {
+        npcs[i].sprite = createSprite((i + 1) * 50, (i + 1) * 50, width / 20, height / 20);
+    }
+
+    for (let i = 0; i < objects.length; i++) {
+        objects[i].sprite = createSprite((i + 1) * 500, (i + 1) * 500, width / 30, height / 30);
+    }
 }
-
