@@ -1,7 +1,6 @@
 const size = 650;
 const characterSize = 48;
 const objectSize = size / 30;
-let nessWalkAnimation;
 
 const ness = {
     sprite: undefined,
@@ -63,10 +62,6 @@ const mom = {
 const npcs = [paula, jeff, poo, pokey];
 let objects = [basket, protractor, crown, mom];
 
-function preload() {
-    // nessWalkDownAnimation = loadAnimation('assets/down0001.png', 'assets/down0002.png');
-}
-
 function setup() {
     createCanvas(size, size);
     rectMode(CENTER);
@@ -78,7 +73,6 @@ function draw() {
     background("yellow");
     fill("grey");
     drawSprites();
-    // ness.sprite.changeAnimation('walk');
     detectCollisionWithNPCs();
     detectCollisionWithObjects();
     handleMovement();
@@ -139,20 +133,30 @@ function detectCollisionWithObjects() {
 function handleMovement() {
     if(keyIsDown(LEFT_ARROW)) {
         ness.sprite.setSpeed(3, 180);
+        ness.sprite.changeAnimation('right');
+        ness.sprite.mirrorX(-1);
     } else if(keyIsDown(RIGHT_ARROW)) {
         ness.sprite.setSpeed(3, 0);
+        ness.sprite.changeAnimation('right');
+        ness.sprite.mirrorX(1);
     } else if(keyIsDown(UP_ARROW)) {
         ness.sprite.setSpeed(3, 270);
+        ness.sprite.changeAnimation('up');
     } else if(keyIsDown(DOWN_ARROW)) {
         ness.sprite.setSpeed(3,90);
+        ness.sprite.changeAnimation('down');
     } else {
         ness.sprite.setSpeed(0);
+        ness.sprite.changeAnimation('still');
     }
 }
 
 function initializeSprites() {
     ness.sprite = createSprite(width / 2, height / 2, characterSize, characterSize);
-    ness.sprite.addAnimation('walk', 'assets/down0001.png', 'assets/down0002.png');
+    ness.sprite.addAnimation('still', 'assets/standing/still.png');
+    ness.sprite.addAnimation('up', 'assets/walking/up0001.png', 'assets/walking/up0002.png');
+    ness.sprite.addAnimation('right', 'assets/walking/right0001.png', 'assets/walking/right0002.png');
+    ness.sprite.addAnimation('down', 'assets/walking/down0001.png', 'assets/walking/down0002.png');
 
     paula.sprite = createSprite(100, 50, characterSize, characterSize);
     jeff.sprite = createSprite(size - 100, 100, characterSize, characterSize);
