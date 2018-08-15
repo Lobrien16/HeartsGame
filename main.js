@@ -163,6 +163,11 @@ function initializeSprites() {
     poo.sprite = createSprite(100, size - 100, characterSize, characterSize);
     pokey.sprite = createSprite(size - 100, size - 100, characterSize, characterSize);
 
+    for (let i = 0; i < npcs.length; i++) {
+        npcs[i].sprite.addAnimation('still', 'assets/frames/' + npcs[i].name.toLowerCase() + '.png');
+        npcs[i].sprite.changeAnimation('still');
+    }
+
     for (let i = 0; i < objects.length; i++) {
         objects[i].sprite = createSprite(random(objectSize + 10, width - objectSize - 10), random(objectSize + 10, height - objectSize - 10), objectSize, objectSize);
     }
