@@ -64,7 +64,7 @@ const npcs = [paula, jeff, poo, pokey];
 let objects = [basket, protractor, crown, mom];
 
 function preload() {
-    nessWalkDownAnimation = loadAnimation('assets/down0001.png', 'assets/down0002.png');
+    // nessWalkDownAnimation = loadAnimation('assets/down0001.png', 'assets/down0002.png');
 }
 
 function setup() {
@@ -152,7 +152,7 @@ function handleMovement() {
 
 function initializeSprites() {
     ness.sprite = createSprite(width / 2, height / 2, characterSize, characterSize);
-    ness.sprite.addAnimation('walk', nessWalkAnimation);
+    ness.sprite.addAnimation('walk', 'assets/down0001.png', 'assets/down0002.png');
 
     paula.sprite = createSprite(100, 50, characterSize, characterSize);
     jeff.sprite = createSprite(size - 100, 100, characterSize, characterSize);
