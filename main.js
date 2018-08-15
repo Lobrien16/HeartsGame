@@ -148,6 +148,7 @@ function initializeSprites() {
     const nessWalkSpriteSheet = loadSpriteSheet('assets/sprite_sheet.png', 32, 48, 16);
     const nessWalkAnimation = loadAnimation(nessWalkSpriteSheet);
     ness.sprite.addAnimation('walk', nessWalkAnimation);
+    ness.sprite.changeAnimation('walk');
 
     paula.sprite = createSprite(100, 50, characterSize, characterSize);
     jeff.sprite = createSprite(size - 100, 100, characterSize, characterSize);
