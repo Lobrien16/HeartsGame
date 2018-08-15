@@ -1,6 +1,7 @@
 const size = 650;
-const characterSize = size / 20;
+const characterSize = 48;
 const objectSize = size / 30;
+let nessWalkAnimation;
 
 const ness = {
     sprite: undefined,
@@ -62,6 +63,10 @@ const mom = {
 const npcs = [paula, jeff, poo, pokey];
 let objects = [basket, protractor, crown, mom];
 
+function preload() {
+    nessWalkDownAnimation = loadAnimation('assets/down0001.png', 'assets/down0002.png');
+}
+
 function setup() {
     createCanvas(size, size);
     rectMode(CENTER);
@@ -69,10 +74,11 @@ function setup() {
 }
 
 function draw() {
+    clear();
     background("yellow");
     fill("grey");
     drawSprites();
-    ness.sprite.changeAnimation('walk');
+    // ness.sprite.changeAnimation('walk');
     detectCollisionWithNPCs();
     detectCollisionWithObjects();
     handleMovement();
@@ -146,8 +152,6 @@ function handleMovement() {
 
 function initializeSprites() {
     ness.sprite = createSprite(width / 2, height / 2, characterSize, characterSize);
-    const nessWalkSpriteSheet = loadSpriteSheet('assets/sprite_sheet.png', 32, 48, 16);
-    const nessWalkAnimation = loadAnimation(nessWalkSpriteSheet);
     ness.sprite.addAnimation('walk', nessWalkAnimation);
 
     paula.sprite = createSprite(100, 50, characterSize, characterSize);
