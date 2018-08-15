@@ -153,10 +153,10 @@ function handleMovement() {
 
 function initializeSprites() {
     ness.sprite = createSprite(width / 2, height / 2, characterSize, characterSize);
-    ness.sprite.addAnimation('still', 'assets/standing/still.png');
-    ness.sprite.addAnimation('up', 'assets/walking/up0001.png', 'assets/walking/up0002.png');
-    ness.sprite.addAnimation('right', 'assets/walking/right0001.png', 'assets/walking/right0002.png');
-    ness.sprite.addAnimation('down', 'assets/walking/down0001.png', 'assets/walking/down0002.png');
+    ness.sprite.addAnimation('still', 'assets/frames/still.png');
+    ness.sprite.addAnimation('up', 'assets/frames/up0001.png', 'assets/frames/up0002.png');
+    ness.sprite.addAnimation('right', 'assets/frames/right0001.png', 'assets/frames/right0002.png');
+    ness.sprite.addAnimation('down', 'assets/frames/down0001.png', 'assets/frames/down0002.png');
 
     paula.sprite = createSprite(100, 50, characterSize, characterSize);
     jeff.sprite = createSprite(size - 100, 100, characterSize, characterSize);
