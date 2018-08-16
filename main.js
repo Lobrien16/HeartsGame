@@ -186,7 +186,7 @@ function initializeSprites() {
     for (let i = 0; i < objects.length; i++) {
         objects[i].sprite = createSprite(random(objectSize + 10, width - objectSize - 10), random(objectSize + 10, height - objectSize - 10), objectSize, objectSize);
         //add animations just like previous for loop for objects
-
+        objects.sprite.addAnimation('lardna', 'assets/frames/' + objects.name.toLowerCase() + '.png');
         if (objects[i].name === 'crown') {
             objects[i].sprite.addAnimation('trash', 'assets/frames/trash.png');
         } else {
