@@ -1,6 +1,7 @@
 const size = 650;
 const characterSize = 48;
 const objectSize = size / 30;
+const viewSize = 250;
 
 const ness = {
     sprite: undefined,
@@ -66,7 +67,7 @@ let song, bg;
 
 function preload() {
     song = loadSound('assets/sounds/main_music.mp3'); 
-    bg = loadImage('assets/frames/bg.png')
+    bg = loadImage('assets/frames/bg.png');
 }
 
 function setup() {
@@ -77,9 +78,7 @@ function setup() {
 }
 
 function draw() {
-    clear();
-    background(bg);
-    fill("black");
+    drawCanvas();
     drawSprites();
     detectCollisionWithNPCs();
     detectCollisionWithObjects();
@@ -100,8 +99,6 @@ function detectCollisionWithNPCs() {
 }
 
 function didCollideWithObject() {
-    console.log(this.name);
-
     if (this.name === 'basket') {
         ness.quests.basket = true;
         paula.dialogue = 'A basket? For moi?! Youre so sweet Ness! Thank you! Huh? My boyfriend? Shoot I forgot I agreed to that. Me and my big mouth! uhhhhh(gotta get outta this somehow) I dont want to ruin our friendship! Youre like a brother to me after all!(phew.. nailed it)';
@@ -136,6 +133,17 @@ function detectCollisionWithObjects() {
     for (const object of objects) {
         ness.sprite.collide(object.sprite, didCollideWithObject.bind(object));
     }
+}
+
+function drawCanvas() {
+    clear();
+    background(bg);
+    fill("white");
+    rect(0, 0, ness.x - (viewSize / 2), height);
+    rect(0, 0, width, ness.y - (viewSize / 2));
+    rect(ness.x + (viewSize / 2), 0, width - (ness.x + (viewSize / 2)), height);
+    rect(0, ness.y + (viewSize / 2), width, height - (ness.y + (viewSize / 2)));
+    fill("black");
 }
 
 function handleMovement() {
