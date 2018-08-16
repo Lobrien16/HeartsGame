@@ -11,7 +11,7 @@ const ness = {
         basket: false,
         protractor: false,
         crown: false,
-        mom: false
+        lardna: false
     }
 };
 
@@ -54,14 +54,14 @@ const crown = {
     name: 'crown'
 }
 
-const mom = {
+const lardna = {
     sprite: undefined,
-    name: 'mom',
+    name: 'lardna',
     dialogue: 'Oh, why hello there Ness! What brings you here? Wait, lemme guess: My son, Pokey must be up to no good again huh? I know because you only talk to me when he screws up. Youve always been a bit of a tattletale after all. UGH! Im am so tired of dealing with that naughty, naughty boy over and over! I always tell him that its better to do good and treat others with respect. Character and integrity: Those are the keys to living a good clean life! but no matter how hard I punish him, its in one ear and out the other! Ness, you tell that little scoundrel of mine that if he doesnt straighten up, Ill punsih him like hes never been punished before! Hell be grounded for 100...no 1000....NO 10000 YEARS!!!'
 }
 
 const npcs = [paula, jeff, poo, pokey];
-let objects = [basket, protractor, crown, mom];
+let objects = [basket, protractor, crown, lardna];
 
 let song, bg;
 
@@ -110,7 +110,7 @@ function didCollideWithObject() {
     }
 
     if (this.name === 'crown') {
-        if (ness.quests.mom) {
+        if (ness.quests.lardna) {
             ness.quests.crown = true;
             poo.dialogue = '(sniff) what do you want?.... wait could it be?...IT IS! MY CROWN! YAHOOOOOO!! Ness you have no idea how much youve salvaged! My families history! My princely status! MY BUTT FROM MY PARENTS! You truly have a heart of gold. Thank you Ness. I also would like to apologize for calling you a peasant earlier. Yknow the whole prince thing goes to your head sometimes...heh...I really need to work on that.';
         } else {
@@ -118,8 +118,8 @@ function didCollideWithObject() {
         }
     }
 
-    if (this.name === 'mom') {
-        ness.quests.mom = true;
+    if (this.name === 'lardna') {
+        ness.quests.lardna = true;
         pokey.dialogue = 'Back again Ness? I already told ya the crown AND the cash are as good as mine so scram! Whats that? (gulp) y..you told my mommy on me?? She says to give back the crown or Im grounded for....HUH!?! 10000 YEARS??? THATS RIDICULOUS!! Ill be dead in 10000! Or at the very least all gross and wrinkly... WELL FINE! Since you want to a little snitch and ruin my only chance at happiness, take the stupid crown! (sniff) I was gonna use the money to buy a pony....I wont be forgetting this NESS! NEVER EVER EVER!' ;
     }
 
@@ -187,9 +187,11 @@ function initializeSprites() {
     for (let i = 0; i < objects.length; i++) {
         objects[i].sprite = createSprite(random(objectSize + 10, width - objectSize - 10), random(objectSize + 10, height - objectSize - 10), objectSize, objectSize);
         //add animations just like previous for loop for objects
-        objects.sprite.addAnimation('lardna', 'assets/frames/' + objects.name.toLowerCase() + '.png');
+       
         if (objects[i].name === 'crown') {
             objects[i].sprite.addAnimation('trash', 'assets/frames/trash.png');
+        } else if (objects[i].name === 'lardna') {
+            objects[i].sprite.addAnimation('lardna', 'assets/frames/lardna.png');
         } else {
             objects[i].sprite.addAnimation('trash', 'assets/frames/present.png');
         }
