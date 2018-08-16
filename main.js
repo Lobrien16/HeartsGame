@@ -62,10 +62,11 @@ const mom = {
 const npcs = [paula, jeff, poo, pokey];
 let objects = [basket, protractor, crown, mom];
 
-let song;
+let song, bg;
 
 function preload() {
     song = loadSound('assets/sounds/main_music.mp3'); 
+    bg = loadImage('assets/frames/bg.png')
 }
 
 function setup() {
@@ -77,8 +78,8 @@ function setup() {
 
 function draw() {
     clear();
-    background("yellow");
-    fill("grey");
+    background(bg);
+    fill("black");
     drawSprites();
     detectCollisionWithNPCs();
     detectCollisionWithObjects();
