@@ -77,7 +77,9 @@ function setup() {
 }
 
 function draw() {
+    scale(3.0);
     background(bg);
+    scale(1.0);
     drawSprites();
     drawViewPoint();
     detectCollisionWithNPCs();
