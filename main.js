@@ -41,23 +41,32 @@ const pokey = {
 
 const basket = {
     sprite: undefined,
-    name: 'basket'
+    name: 'basket',
+    x: size / 10,
+    y: size / 10
 }
 
 const protractor = {
     sprite: undefined,
-    name: 'protractor'
+    name: 'protractor',
+    x: 200,
+    y: 350
 }
 
 const crown = {
     sprite: undefined,
-    name: 'crown'
+    name: 'crown',
+    x: 50,
+    y: 200
 }
 
 const lardna = {
     sprite: undefined,
     name: 'lardna',
-    dialogue: 'Oh, why hello there Ness! What brings you here? Wait, lemme guess: My son, Pokey must be up to no good again huh? I know because you only talk to me when he screws up. Youve always been a bit of a tattletale after all. UGH! Im am so tired of dealing with that naughty, naughty boy over and over! I always tell him that its better to do good and treat others with respect. Character and integrity: Those are the keys to living a good clean life! but no matter how hard I punish him, its in one ear and out the other! Ness, you tell that little scoundrel of mine that if he doesnt straighten up, Ill punsih him like hes never been punished before! Hell be grounded for 100...no 1000....NO 10000 YEARS!!!'
+    dialogue: 'Oh, why hello there Ness! What brings you here? Wait, lemme guess: My son, Pokey must be up to no good again huh? I know because you only talk to me when he screws up. Youve always been a bit of a tattletale after all. UGH! Im am so tired of dealing with that naughty, naughty boy over and over! I always tell him that its better to do good and treat others with respect. Character and integrity: Those are the keys to living a good clean life! but no matter how hard I punish him, its in one ear and out the other! Ness, you tell that little scoundrel of mine that if he doesnt straighten up, Ill punsih him like hes never been punished before! Hell be grounded for 100...no 1000....NO 10000 YEARS!!!',
+    x: size - 50,
+    y: 100
+
 }
 
 const npcs = [paula, jeff, poo, pokey];
@@ -200,7 +209,8 @@ function initializeSprites() {
     }
 
     for (let i = 0; i < objects.length; i++) {
-        objects[i].sprite = createSprite(random(objectSize + 10, width - objectSize - 10), random(objectSize + 10, height - objectSize - 10), objectSize, objectSize);
+        objects[i].sprite = createSprite(objects[i].x, objects[i].y, objectSize, objectSize);
+        // objects[i].sprite = createSprite(random(objectSize + 10, width - objectSize - 10), random(objectSize + 10, height - objectSize - 10), objectSize, objectSize);
         //add animations just like previous for loop for objects
        
         if (objects[i].name === 'crown') {
