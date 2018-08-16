@@ -72,6 +72,7 @@ function preload() {
 
 function setup() {
     createCanvas(size, size);
+    scale(0.5);
     initializeSprites();
     song.play();
 }
