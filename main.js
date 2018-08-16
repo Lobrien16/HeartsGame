@@ -86,7 +86,7 @@ function draw() {
     handleMovement();
 }
 
-function didCollideWithNPC() {
+function drawTextBubble(dialogue) {
     textAlign(CENTER);
     // text(`Hi, I'm ${this.name}`, width / 2, height / 2);
     // text(this.dialogue, (width / 2) + 10, (height / 2) + 15);
@@ -100,7 +100,11 @@ function didCollideWithNPC() {
     textSize(20);
     fill("white");
     textAlign(CENTER);
-    text(this.dialogue, width / 2, (height / 2) + 50, width - 150, height - 150);
+    text(dialogue, width / 2, (height / 2) + 50, width - 150, height - 150);
+}
+
+function didCollideWithNPC() {
+    drawTextBubble(this.dialogue);
 }
 
 function detectCollisionWithNPCs() {
@@ -134,8 +138,7 @@ function didCollideWithObject() {
         pokey.dialogue = 'Back again Ness? I already told ya the crown AND the cash are as good as mine so scram! Whats that? (gulp) y..you told my mommy on me?? She says to give back the crown or Im grounded for....HUH!?! 10000 YEARS??? THATS RIDICULOUS!! Ill be dead in 10000! Or at the very least all gross and wrinkly... WELL FINE! Since you want to a little snitch and ruin my only chance at happiness, take the stupid crown! (sniff) I was gonna use the money to buy a pony....I wont be forgetting this NESS! NEVER EVER EVER!' ;
     }
 
-    textAlign(CENTER);
-    text(`You found ${this.name}`, width / 2, height / 2);
+    drawTextBubble(this.name);
     this.sprite.remove();
     objects = objects.filter(object => object.name !== this.name);
 }
