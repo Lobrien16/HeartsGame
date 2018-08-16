@@ -139,7 +139,7 @@ function didCollideWithObject() {
     }
 
     console.log(`Ness found a ${this.name}!`);
-    drawTextBubble(this.name);
+    // drawTextBubble(this.name);
     this.sprite.remove();
     objects = objects.filter(object => object.name !== this.name);
 }
@@ -164,7 +164,7 @@ function drawViewPoint() {
 
 function handleMovement() {
     if(keyIsDown(LEFT_ARROW)) {
-        ness.sprite.setSpeed(3, 20);
+        ness.sprite.setSpeed(3, 180);
         ness.sprite.changeAnimation('right');
         ness.sprite.mirrorX(-1);
     } else if(keyIsDown(RIGHT_ARROW)) {
