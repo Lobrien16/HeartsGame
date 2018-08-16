@@ -23,7 +23,7 @@ const paula = {
 const jeff = {
     sprite: undefined,
     name: 'Jeff',
-    dialogue: 'I am an A plus student and every teacher loves me! I am so smart, I make sure to ask for extra EXTRA credit. I have never forgotten a homework assignment. Geometry is proving to be quite the challenge however. It sure would be easier if I had a protractor. Please find me one or else I will not be able to complete my homework! My flawless permenant record....RUINED!!!!'
+    dialogue: 'I am an A plus student and every teacher loves me! I am so smart, I make sure to ask for extra EXTRA credit. I have never forgotten a homework assignment. Geometry is proving to be quite the challenge however. It sure would be easier if I had a protractor. Please find me one or else I will not be able to complete my homework! My flawless permenant record....RUINED!!!! A perfect item like that deserves to be wrapped up in present box in a neat little bow...what are the odds of that huh?'
 };
 
 const poo = {
@@ -62,10 +62,16 @@ const mom = {
 const npcs = [paula, jeff, poo, pokey];
 let objects = [basket, protractor, crown, mom];
 
+let song;
+
+function preload() {
+    song = loadSound('assets/sounds/main_music.mp3'); 
+}
 function setup() {
     createCanvas(size, size);
     rectMode(CENTER);
     initializeSprites();
+    song.play();
 }
 
 function draw() {
@@ -151,13 +157,16 @@ function handleMovement() {
     }
 }
 
+var song;
+function preload() {
+    song = loadSound('')
+}
 function initializeSprites() {
     ness.sprite = createSprite(width / 2, height / 2, characterSize, characterSize);
     ness.sprite.addAnimation('still', 'assets/frames/still.png');
     ness.sprite.addAnimation('up', 'assets/frames/up0001.png', 'assets/frames/up0002.png');
     ness.sprite.addAnimation('right', 'assets/frames/right0001.png', 'assets/frames/right0002.png');
     ness.sprite.addAnimation('down', 'assets/frames/down0001.png', 'assets/frames/down0002.png');
-
     paula.sprite = createSprite(100, 50, characterSize, characterSize);
     jeff.sprite = createSprite(size - 100, 100, characterSize, characterSize);
     poo.sprite = createSprite(100, size - 100, characterSize, characterSize);
@@ -170,6 +179,8 @@ function initializeSprites() {
 
     for (let i = 0; i < objects.length; i++) {
         objects[i].sprite = createSprite(random(objectSize + 10, width - objectSize - 10), random(objectSize + 10, height - objectSize - 10), objectSize, objectSize);
+        //add animations just like previous for loop for objects
+        objects[i].sprite.addAnimation('trash', 'assets/frames/' + objects[i].name.toLowerCase() + '.png');
     }
 
     crown.sprite.position.x = pokey.sprite.position.x;
