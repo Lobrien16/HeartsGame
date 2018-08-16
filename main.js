@@ -78,8 +78,9 @@ function setup() {
 }
 
 function draw() {
-    drawCanvas();
+    background(bg);
     drawSprites();
+    drawViewPoint();
     detectCollisionWithNPCs();
     detectCollisionWithObjects();
     handleMovement();
@@ -135,13 +136,13 @@ function detectCollisionWithObjects() {
     }
 }
 
-function drawCanvas() {
-    background(bg);
+function drawViewPoint() {
     fill("white");
-    rect(0, 0, ness.sprite.position.x - (viewSize / 2), height);
-    rect(0, 0, width, ness.sprite.position.y - (viewSize / 2));
-    rect(ness.sprite.position.x + (viewSize / 2), 0, width - (ness.sprite.position.x + (viewSize / 2)), height);
-    rect(0, ness.sprite.position.y + (viewSize / 2), width, height - (ness.sprite.position.y + (viewSize / 2)));
+    console.log('change');
+    rect(0, 0, ness.sprite.position.x - (viewSize / 2), size);
+    rect(0, 0, size, ness.sprite.position.y - (viewSize / 2));
+    rect(ness.sprite.position.x + (viewSize / 2), 0, size - (ness.sprite.position.x + (viewSize / 2)), size);
+    rect(0, ness.sprite.position.y + (viewSize / 2), size, size - (ness.sprite.position.y + (viewSize / 2)));
     fill("black");
 }
 
