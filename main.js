@@ -97,10 +97,10 @@ function didCollideWithNPC() {
     fill("white");
     noStroke();
     noFill();
-    textSize(20);
+    textSize(16);
     fill("white");
     textAlign(CENTER);
-    text(this.dialogue, width / 2, height / 2, width - 150, height - 150);
+    text(this.dialogue, 50, 50, width - 150, height - 150);
 }
 
 function detectCollisionWithNPCs() {
