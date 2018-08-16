@@ -1,6 +1,6 @@
 const size = 650;
 const characterSize = 48;
-const objectSize = size / 30;
+const objectSize = 32;
 const viewSize = 250;
 
 const ness = {
@@ -93,13 +93,13 @@ function didCollideWithNPC() {
     stroke("orange");
     strokeWeight(5);
     fill("purple");
-    rect(330,500,300,100,30);
+    rect(width / 2, height - 50, width - 100, 25);
     fill("white");
     noStroke();
     noFill();
     textSize(20);
     fill("white");
-    text(this.dialogue, 330, 500);
+    text(this.dialogue, width / 2, height - 50);
 }
 
 function detectCollisionWithNPCs() {
