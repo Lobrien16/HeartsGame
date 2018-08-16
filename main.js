@@ -136,14 +136,12 @@ function detectCollisionWithObjects() {
 }
 
 function drawCanvas() {
-    console.log('hi');
-    // clear();
     background(bg);
     fill("white");
-    rect(0, 0, ness.x - (viewSize / 2), height);
-    rect(0, 0, width, ness.y - (viewSize / 2));
-    rect(ness.x + (viewSize / 2), 0, width - (ness.x + (viewSize / 2)), height);
-    rect(0, ness.y + (viewSize / 2), width, height - (ness.y + (viewSize / 2)));
+    rect(0, 0, ness.sprite.position.x - (viewSize / 2), height);
+    rect(0, 0, width, ness.sprite.position.y - (viewSize / 2));
+    rect(ness.sprite.position.x + (viewSize / 2), 0, width - (ness.sprite.position.x + (viewSize / 2)), height);
+    rect(0, ness.sprite.position.y + (viewSize / 2), width, height - (ness.sprite.position.y + (viewSize / 2)));
     fill("black");
 }
 
