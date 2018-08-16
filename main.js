@@ -51,7 +51,16 @@ function didCollideWithNPC() {
     textAlign(CENTER);
     text(`Hi, I'm ${this.name}`, width / 2, height / 2);
     text(this.dialogue, (width / 2) + 10, (height / 2) + 15);
-    
+    stroke("orange");
+    strokeWeight(5);
+    fill("purple");
+    rect(330,500,300,100,30);
+    fill("white");
+    noStroke();
+    noFill();
+    textSize(20);
+    fill("white");
+    text("This is a trial", 330, 500);    
 }
 
 function detectCollisionWithNPCs() {
