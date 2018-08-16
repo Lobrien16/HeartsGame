@@ -72,7 +72,6 @@ function preload() {
 
 function setup() {
     createCanvas(size, size);
-    rectMode(CENTER);
     initializeSprites();
     song.play();
 }
@@ -138,12 +137,14 @@ function detectCollisionWithObjects() {
 
 function drawViewPoint() {
     fill("white");
-    console.log('change');
+    rectMode(CORNER);
+    noStroke();
     rect(0, 0, ness.sprite.position.x - (viewSize / 2), size);
     rect(0, 0, size, ness.sprite.position.y - (viewSize / 2));
     rect(ness.sprite.position.x + (viewSize / 2), 0, size - (ness.sprite.position.x + (viewSize / 2)), size);
     rect(0, ness.sprite.position.y + (viewSize / 2), size, size - (ness.sprite.position.y + (viewSize / 2)));
     fill("black");
+    rectMode(CENTER);
 }
 
 function handleMovement() {
