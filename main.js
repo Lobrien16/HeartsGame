@@ -67,6 +67,7 @@ let song;
 function preload() {
     song = loadSound('assets/sounds/main_music.mp3'); 
 }
+
 function setup() {
     createCanvas(size, size);
     rectMode(CENTER);
