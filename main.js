@@ -136,7 +136,8 @@ function detectCollisionWithObjects() {
 }
 
 function drawCanvas() {
-    clear();
+    console.log('hi');
+    // clear();
     background(bg);
     fill("white");
     rect(0, 0, ness.x - (viewSize / 2), height);
