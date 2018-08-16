@@ -4,6 +4,11 @@ body {
     text-align: center;
 }
 
+#credits {
+    width: 75vw;
+    height: auto;
+}
+
 .container {
     display: flex;
     justify-content: center;
