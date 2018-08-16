@@ -93,13 +93,14 @@ function didCollideWithNPC() {
     stroke("orange");
     strokeWeight(5);
     fill("purple");
-    rect(width / 2, height - 50, width - 100, 25);
+    rect(width / 2, height - 50, width - 100, 50);
     fill("white");
     noStroke();
     noFill();
     textSize(20);
     fill("white");
-    text(this.dialogue, width / 2, height - 50);
+    textAlign(CENTER);
+    text(this.dialogue, width / 2, height - 50, width - 100, 50);
 }
 
 function detectCollisionWithNPCs() {
