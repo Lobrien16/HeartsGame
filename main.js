@@ -139,8 +139,11 @@ function didCollideWithObject() {
     }
 
     drawTextBubble(this.name);
-    this.sprite.remove();
-    objects = objects.filter(object => object.name !== this.name);
+
+    setTimeout(function() {
+        this.sprite.remove();
+        objects = objects.filter(object => object.name !== this.name);
+    }, 2000);
 }
 
 function detectCollisionWithObjects() {
