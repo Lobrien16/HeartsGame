@@ -197,7 +197,7 @@ function initializeSprites() {
     ness.sprite.addAnimation('still', 'assets/frames/still.png');
     ness.sprite.addAnimation('up', 'assets/frames/up0001.png', 'assets/frames/up0002.png');
     ness.sprite.addAnimation('right', 'assets/frames/right0001.png', 'assets/frames/right0002.png');
-    ness.sprite.addAnimation('down', 'assets/frames/down0001.png', 'assets/frames/down0002.png');
+    ness.sprite.addAnimation('down', 'assets/frames/Hephaestuswalkdown001.png', 'assets/frames/Hephaestuswalkdown002.png');
     paula.sprite = createSprite(100, 50, characterSize, characterSize);
     jeff.sprite = createSprite(size - 100, 100, characterSize, characterSize);
     poo.sprite = createSprite(100, size - 100, characterSize, characterSize);
